@@ -1,0 +1,7 @@
+{
+  "name": "apex-chart",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
