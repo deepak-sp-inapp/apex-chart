@@ -1,0 +1,183 @@
+ion-header {
+    --ion-background-color: #25343e;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 21px;
+    div {
+        --ion-background-color: #25343e;
+        width: 100%;
+        .backBtn {
+            position: absolute;
+            left: 42%;
+            transform: translate(-200%);
+        }
+        .sys-logo {
+            max-width: 15%;
+        }
+    }
+}
+
+ion-content, .fixedContainer {
+    --overflow: hidden;
+}
+
+.fixedContainer {
+    background-color: #25343e;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    div {
+        display: flex;
+        &:nth-child(1) {
+            flex: 1;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            ion-text {
+                &:nth-child(1) {
+                    font-size: 0.8em;
+                }
+                &:nth-child(2) {
+                    margin: 5px 0px 5px 0px;
+                    font-size: 2.5em;
+                    color: #ffffff;
+                    letter-spacing: 1.5px;
+                }
+                &:nth-child(3) {
+                    font-size: 1em;
+                }
+            }
+        }
+        &:nth-child(2) {
+            flex: 3;
+            flex-direction: column;
+            justify-content: end;
+            width: 100%;
+            position: relative;
+            .yAxisLabel {
+                position: absolute;
+                height: 85%;
+                right: 2.5%;
+                bottom: 5%;
+                z-index: 9;
+                div {
+                    justify-content: space-between;
+                    text-align: center;
+                    height: 90%;
+                    ion-badge {
+                        font-weight: 500;
+                        font-size: 0.6em;
+                        letter-spacing: 1px;
+                        background-color: #3a48518a;
+                        width: 4.5em;
+                        opacity: 0.8;
+                        border-radius: 10px;
+                        padding: 4px;
+                    }
+                }
+            }
+            .ocean {
+                .vault {
+                    background: url("../../assets/wave-vault.svg") repeat-x;
+                }
+                .premium {
+                    background: url("../../assets/wave-premium.svg") repeat-x;
+                }
+                .trade {
+                    background: url("../../assets/wave-trade.svg") repeat-x;
+                }
+                .wave {
+                    position: absolute;
+                    opacity: 0.2;
+                    bottom: -20px;
+                    width: 3840px;
+                    height: 198px;
+                    animation: wave 10s linear infinite;
+                    transform: translate3d(0, 0, 0);
+                }
+            }
+            ion-row {
+                margin-bottom: 5px;
+                position: relative;
+                z-index: 9;
+                ion-col {
+                    text-align: center;
+                    ion-text {
+                        font-size: 0.85em;
+                        font-weight: 600;
+                        color: #687984;
+                        cursor: pointer;
+                        &.active {
+                            color: #ffffff;
+                        }
+                    }
+                }
+            }
+            .selectedDate {
+                position: absolute;
+                top: 1em;
+                margin: 0 auto;
+                margin-left: auto;
+                margin-right: auto;
+                left: 0;
+                right: 0;
+                text-align: center;
+                font-size: 0.9em;
+                font-weight: 500;
+            }
+        }
+        &:nth-child(3) {
+            flex: 4;
+            width: 100%;
+            ion-row {
+                width: 100%;
+                ion-button {
+                    height: 61px;
+                    width: 100%;
+                    font-size: 1em;
+                    --ion-color-contrast: #fff !important;
+                }
+            }
+        }
+    }
+}
+
+@keyframes wave {
+    0% {
+        margin-left: 0;
+    }
+    100% {
+        margin-left: -1920px;
+    }
+}
+
+:host ::ng-deep .apexcharts-tooltip {
+    background-color: transparent !important;
+    transform: translate(0px, -25px);
+    box-shadow: none !important;
+    .tooltip-vault {
+        color: #1467d4;
+        font-size: 0.75em;
+        font-weight: 600;
+    }
+    .tooltip-date {
+        color: #1467d4;
+        font-size: 0.75em;
+        font-weight: 600;
+    }
+    .tooltip-premium {
+        color: #fcaa12;
+        font-size: 0.75em;
+        font-weight: 600;
+    }
+    .tooltip-trade {
+        color: #4cb51e;
+        font-size: 0.75em;
+        font-weight: 600;
+    }
+}

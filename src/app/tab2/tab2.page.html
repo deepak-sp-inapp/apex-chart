@@ -1,17 +1,106 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
+<ion-header class="ion-no-border">
+  <ion-row class="ion-justify-content-center">
+    <ion-col class="ion-no-padding" size-xs="12" size-sm="10" size-md="5" size-lg="4" size-xl="3">
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="arrow-back" color="light" size="large"></ion-icon>
+      </ion-button>
+      <ion-text class="title">
+        <h1>AGX/USDC</h1>
+        <ion-button fill="clear">
+          <ion-icon slot="icon-only" name="options" color="light" size="large"></ion-icon>
+        </ion-button>
+      </ion-text>
+      <ion-button fill="clear">
+        <ion-text color="primary">Reset</ion-text>
+      </ion-button>
+    </ion-col>
+  </ion-row>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-row class="ion-justify-content-center">
+    <ion-col class="ion-no-padding" size-xs="12" size-sm="10" size-md="5" size-lg="4" size-xl="3">
+      <div class="fixedContainer">
+        <div>
+          <span>
+            <ion-text color="success">
+              <h2>0.9413 USDC</h2>
+            </ion-text>
+            <ion-text color="success"><p>+0.17 (0.019%)</p></ion-text>
+          </span>
+          <span>
+            <ion-row>
+              <ion-col size="6">H</ion-col>
+              <ion-col size="6">0.9575</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="6">L</ion-col>
+              <ion-col size="6">0.9314</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="6">24H</ion-col>
+              <ion-col size="6">0.0261</ion-col>
+            </ion-row>
+          </span>
+        </div>
+        <div id="chart">
+          <apx-chart
+            class="chartCandle"
+            [series]="candleChartOptions.series"
+            [chart]="candleChartOptions.chart"
+            [xaxis]="candleChartOptions.xaxis"
+            [yaxis]="candleChartOptions.yaxis"
+            [title]="candleChartOptions.title"
+            [grid]="candleChartOptions.grid"
+            [dataLabels]="candleChartOptions.dataLabels"
+            [plotOptions]="candleChartOptions.plotOptions"
+          ></apx-chart>
+          <apx-chart
+            class="chartBar"
+            [series]="chartBarOptions.series"
+            [chart]="chartBarOptions.chart"
+            [xaxis]="chartBarOptions.xaxis"
+            [yaxis]="chartBarOptions.yaxis"
+            [dataLabels]="chartBarOptions.dataLabels"
+            [stroke]="chartBarOptions.stroke"
+            [plotOptions]="chartBarOptions.plotOptions"
+            [grid]="chartBarOptions.grid"
+            [toolTip]="toolTip"
+          ></apx-chart>
+          <ion-row class="ion-justify-content-center">
+            <ng-container *ngFor="let yaxis of chartYAxis; let i = index;">
+              <ion-col (click)="getChartData(yaxis, i)">
+                <ion-text [ngClass]="activeYAxis===i?'active':''">{{yaxis}}</ion-text>
+              </ion-col>
+            </ng-container>
+          </ion-row>
+        </div>
+        <div>
+          <ion-segment [value]="currentSegment" (ionChange)="segmentChanged($event)" mode="md" color="success">
+            <ion-segment-button value="order-book">
+              <ion-label>Order Book</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="history">
+              <ion-label>History</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+          <ion-row>
+            <ion-col size="6">
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+            </ion-col>
+          </ion-row>
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>
 </ion-content>
+<!-- <ion-footer>
+  <ion-row>
+    <ion-col size="6">
+      <ion-button color="success" shape="round" expand="block">Buy AGX</ion-button>
+    </ion-col>
+    <ion-col size="6">
+      <ion-button color="danger" shape="round" expand="block">Sell AGX</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-footer> -->

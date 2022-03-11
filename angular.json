@@ -98,7 +98,9 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "styles": [],
-            "scripts": [],
+            "scripts": [
+              "src/assets/apexcharts.js"
+            ],
             "assets": [
               {
                 "glob": "favicon.ico",
